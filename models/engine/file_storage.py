@@ -1,10 +1,11 @@
 """FileSorage Class"""
 
+
 import json
 from models.base_model import BaseModel
 
+
 class FileStorage:
-    
     """
     A class that serializes instances to a
     JSON file and deserializes JSON file to instances
@@ -15,7 +16,7 @@ class FileStorage:
     def all(self):
         """Method to return the dictionary __objects"""
         return FileStorage.__objects
-    
+
     def new(self, obj):
         """Sets in __objects obj with a key value"""
         k = "{}.{}".format(obj.__class__.__name__, obj.id)
