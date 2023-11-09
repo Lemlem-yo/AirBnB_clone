@@ -2,9 +2,11 @@
 Base class that will be the foundation for Airbnb project
 """
 
+
 import uuid
 import models
 from datetime import datetime
+
 
 class BaseModel:
     """Base class for all classes"""
@@ -29,7 +31,6 @@ class BaseModel:
             self.created_at = datetime.now()
             self.updated_at = datetime.now()
             models.storage.new(self)
-            
 
     def __str__(self):
         """
