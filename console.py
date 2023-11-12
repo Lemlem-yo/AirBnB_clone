@@ -1,5 +1,6 @@
 #!/usr/bin/python3
 """hbnb  console"""
+
 import cmd
 import json
 import shlex
@@ -135,20 +136,9 @@ class HBNBCommand(cmd.Cmd):
         obj.save()
 
     def do_all(self, arg):
-        """Prints string representations"""
-        objects = self.load_objects()
+            """Prints all string representations"""
+            objects = self.load_objects()
 
-        if not arg:
-            print([str(obj) for obj in objects.values()])
-            return
-
-        try:
-            cls = eval(arg)
-        except NameError:
-            print("** class doesn't exist **")
-            return
-
-        print([str(obj) for key, obj in objects.items() if key.split(".")[0] == arg])
 
     def load_objects(self):
         """Loads objects from JSON"""
