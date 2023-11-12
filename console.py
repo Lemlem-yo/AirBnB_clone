@@ -1,6 +1,7 @@
 #!/usr/bin/python3
-import cmd
 """hbnb  console"""
+import cmd
+
 
 class HBNBCommand(cmd.Cmd):
     """
@@ -24,6 +25,6 @@ class HBNBCommand(cmd.Cmd):
         """Do nothing on empty input line"""
         pass
 
+
 if __name__ == '__main__':
     HBNBCommand().cmdloop()
-
