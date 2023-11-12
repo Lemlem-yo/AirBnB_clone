@@ -1,7 +1,15 @@
 #!/usr/bin/python3
 import cmd
+"""hbnb  console"""
 
 class HBNBCommand(cmd.Cmd):
+    """
+    Command interpreter
+
+    Attributes:
+        prompt (str): The command prompt
+    """
+
     prompt = "(hbnb) "
 
     def do_quit(self, arg):
