@@ -7,11 +7,11 @@ the user"""
 
 
 class User(BaseModel):
-	"""Initialize user class
-	instance
-	of basemodel class"""
+    """Initialize user class
+    instance
+    of basemodel class"""
 
-	email = ''
-	password = ''
-	first_name =  ''
-	lase_name = ''
+    email = ''
+    password = ''
+    first_name = ''
+    lase_name = ''
