@@ -10,11 +10,13 @@ from models.state import State
 from models.review import Review
 from models.city import City
 
+
 class FileStorage:
     """
     A class that serializes instances to a
     JSON file and deserializes JSON file to instances
     """
+
     __file_path = "file.json"
     __objects = {}
 
