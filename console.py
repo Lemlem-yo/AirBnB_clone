@@ -166,5 +166,36 @@ class HBNBCommand(cmd.Cmd):
                 counter += 1
         print(counter)
 
+    def default(self, arg):
+        """Type method default"""
+        m_dict = {
+            "all": self.do_all,
+            "show": self.do_show,
+            "destroy": self.do_destroy,
+            "count": self.do_count,
+            "update": self.do_update
+        }
+        m = re.search(r"\.", arg)
+        if m is not None:
+            marg = [arg[:m.span()[0]], arg[m.span()[1]:]]
+            m = re.search(r"\((.*?)\)", marg[1])
+            if m is not None:
+                cmd = [marg[1][:m.span()[0]], m.group()[1:-1]]
+                if cmd[0] in m_dict.keys():
+                    if cmd[0] == 'update':
+                        up_dir = re.search(r"(?<=\{)([^\}]+)(?=\})", cmd[1])
+                        up = cmd[1].split()
+                        idd = up[0].replace('"', '').replace(',', '')
+                        if up_dir:
+                            content = up_dir.group()
+                            dir_s = '{' + content[:] + '}'
+                            r_ar = "{} {} {}".format(marg[0], idd, dir_s)
+                            return m_dict['update'](r_ar)
+                    get = "{} {}".format(marg[0], cmd[1].replace('"', ''))
+                    return m_dict[cmd[0]](get)
+        print("*** Unknown syntax: {}".format(arg))
+        return False
+
+
 if __name__ == '__main__':
     HBNBCommand().cmdloop()
