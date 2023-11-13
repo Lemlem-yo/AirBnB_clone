@@ -136,9 +136,27 @@ class HBNBCommand(cmd.Cmd):
         obj.save()
 
     def do_all(self, arg):
-            """Prints all string representations"""
-            objects = self.load_objects()
+        """Prints all string representations"""
+        objects = self.load_objects()
 
+        if not arg:
+            result = []
+            for obj in objects.values():
+                result.append(str(obj))
+            print(result)
+            return
+
+        try:
+            cls = eval(arg)
+        except NameError:
+            print("** class doesn't exist **")
+            return
+
+        result = []
+        for key, obj in objects.items():
+            if key.split(".")[0] == arg:
+                result.append(str(obj))
+        print(result)
 
     def load_objects(self):
         """Loads objects from JSON"""
